@@ -2,7 +2,7 @@
 #include "common.h"
 #include "device.h"
 
-#if defined(PLATFORM_ESP32)
+#if defined(PLATFORM_ESP32) && defined(USE_BLE_JOYSTICK)
 
 #if defined(Regulatory_Domain_AU_915) || defined(Regulatory_Domain_EU_868) || defined(Regulatory_Domain_IN_866) || defined(Regulatory_Domain_FCC_915) || defined(Regulatory_Domain_AU_433) || defined(Regulatory_Domain_EU_433)
 extern SX127xDriver Radio;
@@ -96,4 +96,11 @@ device_t BLE_device = {
   .timeout = timeout
 };
 
-#endif
+#else // PLATFORM_ESP32 && USE_BLE_JOYSTICK not defined
+// Provide empty stub so that library can still be built when BLE joystick is disabled.
+
+device_t BLE_device = {
+    NULL
+};
+
+#endif // USE_BLE_JOYSTICK

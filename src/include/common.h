@@ -1,5 +1,16 @@
 #pragma once
 
+// Provide fall-back definitions for compiler branch-prediction hints when they
+// are not supplied by the tool-chain / SDK headers. This prevents build
+// failures in third-party libraries (e.g. NeoPixelBus) that expect these
+// macros to exist.
+#ifndef likely
+#define likely(x)   (x)
+#endif
+#ifndef unlikely
+#define unlikely(x) (x)
+#endif
+
 #ifndef UNIT_TEST
 #include "targets.h"
 
