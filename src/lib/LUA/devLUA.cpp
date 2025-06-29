@@ -138,7 +138,7 @@ static struct luaItem_command luaVRxBackpackUpdate = {
 #endif // USE_TX_BACKPACK
 //---------------------------- WiFi -----------------------------
 
-#if defined(PLATFORM_ESP32)
+#if defined(PLATFORM_ESP32) && defined(USE_BLE_JOYSTICK)
 static struct luaItem_command luaBLEJoystick = {
     {"BLE Joystick", CRSF_COMMAND},
     0, // step
@@ -383,7 +383,7 @@ static void registerLuaParameters()
   },luaWiFiFolder.common.id);
   #endif // USE_TX_BACKPACK
 
-  #if defined(PLATFORM_ESP32)
+  #if defined(PLATFORM_ESP32) && defined(USE_BLE_JOYSTICK)
     registerLUAParameter(&luaBLEJoystick, [](uint8_t id, uint8_t arg){
       if (arg == 4) // 4 = request confirmed, start
       {
