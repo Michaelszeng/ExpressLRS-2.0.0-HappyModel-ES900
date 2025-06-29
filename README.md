@@ -1,9 +1,11 @@
-# WHAT THIS IS:
+# WHAT THIS REPO IS:
 
 My modifications to ExpressLRS 2.0.0 firmware (built on top of [Release 2.0.0](https://github.com/ExpressLRS/ExpressLRS/releases/tag/2.0.0)) to allow it to build using the PlatformIO VSCode extension and flash onto my HappyModel ES900TX ELRS module.
 
 I had significant difficulties getting the actual ExpressLRS release and unmodified code to build properly. I fixed the issue by removing the BLE features (BLE Joystick) and adding definitions for compiler-hint macros (`likely()` and `unlikely()`, which some libraries seem to want for hinting branch-prediction).
 
+
+# Original ExpressLRS README:
 
 ![Banner](https://github.com/ExpressLRS/ExpressLRS-Hardware/blob/master/img/banner.png)
 
